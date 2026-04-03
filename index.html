@@ -3,58 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QuickFast - Instant Website Builder</title>
+    <title>QuickFast - Freemium Builder</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-blue-50">
-    <div class="max-w-md mx-auto min-h-screen bg-white shadow-2xl pb-10 font-sans text-center">
-        <div class="bg-blue-600 p-8 text-white rounded-b-[40px] shadow-lg">
-            <h1 class="text-4xl font-black italic tracking-tighter text-yellow-300">⚡ QUICKFAST</h1>
-            <p class="text-sm mt-1 font-medium opacity-90 uppercase tracking-widest">Instant Website Builder</p>
+<body class="bg-gray-100 font-sans">
+    <div class="max-w-md mx-auto min-h-screen bg-white shadow-2xl pb-10">
+        <div class="bg-indigo-700 p-8 text-white rounded-b-[40px] text-center shadow-lg">
+            <h1 class="text-4xl font-extrabold tracking-tighter text-yellow-400 italic">⚡ QUICKFAST</h1>
+            <p class="text-xs mt-1 opacity-80 font-bold uppercase tracking-widest">3 நிமிடத்தில் உங்கள் வெப்சைட்</p>
         </div>
 
-        <div class="p-6 space-y-5 mt-4">
-            <p class="text-gray-500 font-bold text-sm">பெயரை டைப் செய்து வெப்சைட்டை இப்போதே பாருங்கள்!</p>
-            <input type="text" id="bizName" placeholder="நிறுவனத்தின் பெயர் (எ.கா: சரவணா ஸ்டோர்ஸ்)" class="w-full p-5 bg-gray-50 border-2 border-blue-100 rounded-2xl focus:border-blue-500 outline-none shadow-inner font-bold text-center">
+        <div class="p-6 space-y-4">
+            <input type="text" id="bizName" placeholder="பிசினஸ் பெயர் (எ.கா: ஜேகே மொபைல்ஸ்)" class="w-full p-5 border-2 border-indigo-100 rounded-2xl outline-none focus:border-indigo-500 shadow-inner font-bold text-center">
             
-            <button onclick="build()" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-black py-5 rounded-2xl shadow-xl transform active:scale-95 transition-all text-xl uppercase">
-                இலவசமாக உருவாக்கு 🚀
+            <button onclick="generate()" class="w-full bg-indigo-600 text-white font-black py-5 rounded-2xl shadow-xl active:scale-95 transition-all text-xl uppercase">
+                வெப்சைட் உருவாக்கு 🚀
             </button>
         </div>
 
-        <div id="result" class="hidden p-6 animate-in slide-in-from-bottom duration-500">
-            <div class="border-4 border-dashed border-blue-400 p-8 rounded-[30px] bg-blue-50 relative shadow-inner text-center">
-                <h2 id="displayTitle" class="text-3xl font-black text-blue-900 uppercase"></h2>
-                <p id="displayText" class="text-blue-700 mt-2 font-medium">சிறந்த சேவைகளுக்கு எங்களை உடனே அழையுங்கள்!</p>
-                <div class="mt-6 flex gap-2 justify-center">
-                    <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-[10px] font-black uppercase text-center">Active Now</span>
-                    <span class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-[10px] font-black uppercase text-center">Mobile Ready</span>
+        <div id="output" class="hidden p-6 space-y-6">
+            
+            <div class="border-2 border-gray-300 p-6 rounded-3xl bg-white relative">
+                <span class="absolute top-0 right-4 bg-gray-500 text-white text-[10px] px-3 py-1 rounded-b-lg font-bold">FREE PLAN</span>
+                <h2 id="freeTitle" class="text-2xl font-bold text-gray-800 uppercase"></h2>
+                <p class="text-gray-500 text-sm mt-2 font-medium">எங்கள் சேவைகளுக்கு தொடர்பு கொள்ளவும்.</p>
+                <div class="mt-4 pt-4 border-t border-gray-100 flex justify-between items-center text-[10px] text-gray-400 font-bold italic">
+                    <span>⚡ Powered by QuickFast Free</span>
                 </div>
             </div>
-            
-            <div class="mt-10 bg-black p-6 rounded-[30px] shadow-2xl border-t-4 border-yellow-400 text-center">
-                <h3 class="font-black text-2xl text-yellow-400 uppercase mb-2 italic">லைவ் கொண்டு வர வேண்டுமா?</h3>
-                <p class="text-xs text-white opacity-80 mb-6 font-bold uppercase">இந்த வெப்சைட்டை உங்கள் பெயரில் பெற வெறும் ₹99 மட்டும் செலுத்துங்கள்!</p>
-                
-                <button onclick="payNow()" class="w-full bg-yellow-400 text-black py-5 rounded-2xl font-black text-xl shadow-lg hover:bg-yellow-500 transition-colors uppercase text-center">
-                    இப்பொழுதே பணம் செலுத்து 💳
-                </button>
+
+            <div class="bg-gradient-to-br from-yellow-400 to-orange-500 p-1 rounded-[32px] shadow-2xl transform rotate-1">
+                <div class="bg-white p-6 rounded-[30px] relative overflow-hidden">
+                    <span class="absolute top-0 right-4 bg-black text-yellow-400 text-[10px] px-3 py-1 rounded-b-lg font-black uppercase">PREMIUM 💎</span>
+                    <h2 id="premTitle" class="text-3xl font-black text-indigo-900 uppercase tracking-tighter"></h2>
+                    <p class="text-indigo-700 font-bold italic text-sm">உங்களின் பிரத்யேக பிசினஸ் தளம்!</p>
+                    
+                    <div class="mt-4 grid grid-cols-2 gap-2">
+                        <div class="bg-indigo-50 p-3 rounded-xl text-center">
+                            <p class="text-[10px] font-black text-indigo-400 uppercase">WhatsApp</p>
+                            <p class="text-xs font-bold">நேரடி இணைப்பு</p>
+                        </div>
+                        <div class="bg-indigo-50 p-3 rounded-xl text-center text-indigo-800">
+                            <p class="text-[10px] font-black text-indigo-400 uppercase">Domain</p>
+                            <p class="text-xs font-bold text-indigo-800">www.பெயர்.com</p>
+                        </div>
+                    </div>
+
+                    <div class="mt-6 text-center border-t pt-4">
+                        <p class="text-[10px] text-gray-500 font-bold mb-2">அட்வான்ஸ் வசதிகளைப் பெற ₹99 மட்டும் செலுத்துங்கள்!</p>
+                        <button onclick="payNow()" class="w-full bg-black text-white py-4 rounded-2xl font-black text-lg hover:scale-105 transition-transform">
+                            உடனே ஆக்டிவேட் செய் 💳
+                        </button>
+                    </div>
+                </div>
             </div>
+
         </div>
     </div>
 
     <script>
-        function build() {
+        function generate() {
             const name = document.getElementById('bizName').value;
-            if(!name) { alert("பெயரை உள்ளிடவும்!"); return; }
-            document.getElementById('displayTitle').innerText = name;
-            document.getElementById('result').classList.remove('hidden');
+            if(!name) return alert("பெயரை உள்ளிடவும்!");
+
+            document.getElementById('freeTitle').innerText = name;
+            document.getElementById('premTitle').innerText = name;
+            document.getElementById('output').classList.remove('hidden');
             window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
         }
 
         function payNow() {
             const name = document.getElementById('bizName').value;
-            const msg = `வணக்கம்! நான் QuickFast ஆப் மூலம் என் பிசினஸிற்கு (${name}) வெப்சைட் உருவாக்க விரும்புகிறேன். ₹99 செலுத்த நான் தயார்!`;
+            const msg = `வணக்கம்! நான் QuickFast Premium (₹99) வாங்க விரும்புகிறேன். பிசினஸ்: ${name}`;
             window.open(`https://wa.me/?text=${encodeURIComponent(msg)}`, '_blank');
         }
     </script>

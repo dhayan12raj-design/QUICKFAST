@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuickFast - Instant Website Builder</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-blue-50">
+    <div class="max-w-md mx-auto min-h-screen bg-white shadow-2xl">
+        <div class="bg-blue-600 p-6 text-white text-center rounded-b-3xl">
+            <h1 class="text-3xl font-extrabold">⚡ QuickFast</h1>
+            <p class="text-sm opacity-80">உங்களுக்கான வெப்சைட் இப்பொழுதே தயார்!</p>
+        </div>
+
+        <div class="p-6 space-y-4">
+            <input type="text" id="bizName" placeholder="நிறுவனத்தின் பெயர்" class="w-full p-4 border-2 border-blue-100 rounded-2xl focus:border-blue-500 outline-none">
+            
+            <select id="bizType" class="w-full p-4 border-2 border-blue-100 rounded-2xl bg-white">
+                <option value="General Store">மளிகை கடை</option>
+                <option value="Restaurant">உணவகம்</option>
+                <option value="Service">சர்வீஸ் சென்டர்</option>
+            </select>
+
+            <button onclick="build()" class="w-full bg-blue-600 text-white font-bold py-4 rounded-2xl shadow-lg active:scale-95 transition">
+                வெப்சைட் உருவாக்கு
+            </button>
+        </div>
+
+        <div id="result" class="hidden p-6 animate-pulse">
+            <div class="border-4 border-double border-blue-500 p-6 rounded-3xl bg-blue-50 text-center">
+                <h2 id="displayTitle" class="text-2xl font-bold text-blue-800"></h2>
+                <p id="displayText" class="text-gray-600 mt-2"></p>
+                <div class="mt-4 flex justify-around">
+                    <button class="bg-green-500 text-white px-4 py-2 rounded-lg text-sm">WhatsApp</button>
+                    <button class="bg-blue-500 text-white px-4 py-2 rounded-lg text-sm">Call Us</button>
+                </div>
+            </div>
+            
+            <div class="mt-8 bg-yellow-50 p-4 rounded-2xl border border-yellow-200">
+                <p class="text-center font-bold text-yellow-800 text-sm">இந்த வெப்சைட்டை சொந்த டொமைனில் (www.example.com) மாற்ற வேண்டுமா?</p>
+                <button onclick="pay()" class="w-full mt-3 bg-black text-white py-3 rounded-xl font-bold">₹99 மட்டும் செலுத்துங்கள்</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function build() {
+            const name = document.getElementById('bizName').value;
+            const type = document.getElementById('bizType').value;
+            if(!name) return alert("பெயரை உள்ளிடவும்!");
+
+            document.getElementById('displayTitle').innerText = name;
+            document.getElementById('displayText').innerText = "சிறந்த " + type + " சேவைகளை வழங்குகிறோம்.";
+            document.getElementById('result').classList.remove('hidden');
+        }
+
+        function pay() {
+            alert("வாழ்த்துக்கள்! உங்கள் பேமெண்ட் பக்கம் தயாராகிறது. (இது உங்கள் லாபம்!)");
+        }
+    </script>
+</body>
+</html>

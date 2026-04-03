@@ -7,39 +7,38 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-blue-50">
-    <div class="max-w-md mx-auto min-h-screen bg-white shadow-2xl">
-        <div class="bg-blue-600 p-6 text-white text-center rounded-b-3xl">
-            <h1 class="text-3xl font-extrabold">⚡ QuickFast</h1>
-            <p class="text-sm opacity-80">உங்களுக்கான வெப்சைட் இப்பொழுதே தயார்!</p>
+    <div class="max-w-md mx-auto min-h-screen bg-white shadow-2xl pb-10 font-sans text-center">
+        <div class="bg-blue-600 p-8 text-white rounded-b-[40px] shadow-lg">
+            <h1 class="text-4xl font-black italic tracking-tighter text-yellow-300">⚡ QUICKFAST</h1>
+            <p class="text-sm mt-1 font-medium opacity-90 uppercase tracking-widest">Instant Website Builder</p>
         </div>
 
-        <div class="p-6 space-y-4">
-            <input type="text" id="bizName" placeholder="நிறுவனத்தின் பெயர்" class="w-full p-4 border-2 border-blue-100 rounded-2xl focus:border-blue-500 outline-none">
+        <div class="p-6 space-y-5 mt-4">
+            <p class="text-gray-500 font-bold text-sm">பெயரை டைப் செய்து வெப்சைட்டை இப்போதே பாருங்கள்!</p>
+            <input type="text" id="bizName" placeholder="நிறுவனத்தின் பெயர் (எ.கா: சரவணா ஸ்டோர்ஸ்)" class="w-full p-5 bg-gray-50 border-2 border-blue-100 rounded-2xl focus:border-blue-500 outline-none shadow-inner font-bold text-center">
             
-            <select id="bizType" class="w-full p-4 border-2 border-blue-100 rounded-2xl bg-white">
-                <option value="General Store">மளிகை கடை</option>
-                <option value="Restaurant">உணவகம்</option>
-                <option value="Service">சர்வீஸ் சென்டர்</option>
-            </select>
-
-            <button onclick="build()" class="w-full bg-blue-600 text-white font-bold py-4 rounded-2xl shadow-lg active:scale-95 transition">
-                வெப்சைட் உருவாக்கு
+            <button onclick="build()" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-black py-5 rounded-2xl shadow-xl transform active:scale-95 transition-all text-xl uppercase">
+                இலவசமாக உருவாக்கு 🚀
             </button>
         </div>
 
-        <div id="result" class="hidden p-6 animate-pulse">
-            <div class="border-4 border-double border-blue-500 p-6 rounded-3xl bg-blue-50 text-center">
-                <h2 id="displayTitle" class="text-2xl font-bold text-blue-800"></h2>
-                <p id="displayText" class="text-gray-600 mt-2"></p>
-                <div class="mt-4 flex justify-around">
-                    <button class="bg-green-500 text-white px-4 py-2 rounded-lg text-sm">WhatsApp</button>
-                    <button class="bg-blue-500 text-white px-4 py-2 rounded-lg text-sm">Call Us</button>
+        <div id="result" class="hidden p-6 animate-in slide-in-from-bottom duration-500">
+            <div class="border-4 border-dashed border-blue-400 p-8 rounded-[30px] bg-blue-50 relative shadow-inner text-center">
+                <h2 id="displayTitle" class="text-3xl font-black text-blue-900 uppercase"></h2>
+                <p id="displayText" class="text-blue-700 mt-2 font-medium">சிறந்த சேவைகளுக்கு எங்களை உடனே அழையுங்கள்!</p>
+                <div class="mt-6 flex gap-2 justify-center">
+                    <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-[10px] font-black uppercase text-center">Active Now</span>
+                    <span class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-[10px] font-black uppercase text-center">Mobile Ready</span>
                 </div>
             </div>
             
-            <div class="mt-8 bg-yellow-50 p-4 rounded-2xl border border-yellow-200">
-                <p class="text-center font-bold text-yellow-800 text-sm">இந்த வெப்சைட்டை சொந்த டொமைனில் (www.example.com) மாற்ற வேண்டுமா?</p>
-                <button onclick="pay()" class="w-full mt-3 bg-black text-white py-3 rounded-xl font-bold">₹99 மட்டும் செலுத்துங்கள்</button>
+            <div class="mt-10 bg-black p-6 rounded-[30px] shadow-2xl border-t-4 border-yellow-400 text-center">
+                <h3 class="font-black text-2xl text-yellow-400 uppercase mb-2 italic">லைவ் கொண்டு வர வேண்டுமா?</h3>
+                <p class="text-xs text-white opacity-80 mb-6 font-bold uppercase">இந்த வெப்சைட்டை உங்கள் பெயரில் பெற வெறும் ₹99 மட்டும் செலுத்துங்கள்!</p>
+                
+                <button onclick="payNow()" class="w-full bg-yellow-400 text-black py-5 rounded-2xl font-black text-xl shadow-lg hover:bg-yellow-500 transition-colors uppercase text-center">
+                    இப்பொழுதே பணம் செலுத்து 💳
+                </button>
             </div>
         </div>
     </div>
@@ -47,16 +46,16 @@
     <script>
         function build() {
             const name = document.getElementById('bizName').value;
-            const type = document.getElementById('bizType').value;
-            if(!name) return alert("பெயரை உள்ளிடவும்!");
-
+            if(!name) { alert("பெயரை உள்ளிடவும்!"); return; }
             document.getElementById('displayTitle').innerText = name;
-            document.getElementById('displayText').innerText = "சிறந்த " + type + " சேவைகளை வழங்குகிறோம்.";
             document.getElementById('result').classList.remove('hidden');
+            window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
         }
 
-        function pay() {
-            alert("வாழ்த்துக்கள்! உங்கள் பேமெண்ட் பக்கம் தயாராகிறது. (இது உங்கள் லாபம்!)");
+        function payNow() {
+            const name = document.getElementById('bizName').value;
+            const msg = `வணக்கம்! நான் QuickFast ஆப் மூலம் என் பிசினஸிற்கு (${name}) வெப்சைட் உருவாக்க விரும்புகிறேன். ₹99 செலுத்த நான் தயார்!`;
+            window.open(`https://wa.me/?text=${encodeURIComponent(msg)}`, '_blank');
         }
     </script>
 </body>
